@@ -22,7 +22,7 @@
 
 @foreach (var restaurant in Model.Restaurants)
 {
-    // Sle Note: the below VisStud special html calls a partial view, found in
+    // sle note: the below VisStud special html calls a partial view, found in
     // the same directory, called _Summary.cshtml. By convention (not enforced) partial
     // views prepended with '_'.
     // Note: 'var restaurant' is passed as a parameter (aka the Model);
@@ -33,5 +33,8 @@
 <a asp-page="./Edit" class="btn btn-outline-primary">Add New</a>
 
 @section footer {
+    <!-- SLE note: if surrounded in a amp section, then place in the footer section in _layout.cshtml-->
+    <!-- SLE note: amp&Model.Message is pulled from the attribute of the List.cs, which in this case is from config["Message"]; -->
     <div>@Model.Message</div>
+    <p>This is a foot test</p>
 }

@@ -71,11 +71,13 @@
     </footer>
 
     <environment include="Development">
+        <!--SLE note: debug java script-->
         <script src="~/node_modules/jquery/dist/jquery.js"></script>
         <script src="~/node_modules/bootstrap/dist/js/bootstrap.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
     </environment>
     <environment exclude="Development">
+        <!--SLE note: optimized java script-->
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.4.1.min.js"
                 asp-fallback-src="~/node_modules/jquery/dist/jquery.js"
                 asp-fallback-test="window.jQuery">
