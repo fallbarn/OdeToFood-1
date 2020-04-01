@@ -9,7 +9,7 @@
 <form method="get">
     <div class="form-group">
         <div class="input-group">
-            <input type="search" class="form-control" 
+            <input type="search" class="form-control"
                    asp-for="SearchTerm" />
             <span>
                 <button class="btn btn-default">
@@ -20,8 +20,13 @@
     </div>
 </form>
 
-@foreach(var restaurant in Model.Restaurants)
+@foreach (var restaurant in Model.Restaurants)
 {
+    // Sle Note: the below VisStud special html calls a partial view, found in
+    // the same directory, called _Summary.cshtml. By convention (not enforced) partial
+    // views prepended with '_'.
+    // Note: 'var restaurant' is passed as a parameter (aka the Model);
+    // _Summary.cshtml must have @using OdeToFood.Core and @model Restaurant to find the Type.
     <partial name="_Summary" model="restaurant" />
 }
 
