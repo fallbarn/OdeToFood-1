@@ -21,10 +21,10 @@
 </form>
 
 
-//
-// sle note: notice how he @ gives access to C# blocks. and when placed in front of a string the data is simply output into html.
-//   for example, in the code below, '@restaurant.name' would write the resturant's name onto the page.
-//
+
+ @*sle note: notice how he @ gives access to C# blocks. and when placed in front of a string the data is simply output into html.
+ for example, in the code below, '@restaurant.name' would write the resturant's name onto the page.*@
+
 @foreach (var restaurant in Model.Restaurants)
 {
     // sle note: the below VS special html calls a partial view, found in
