@@ -29,6 +29,9 @@ namespace OdeToFood
             // Add options to associate with OdeToFoodContext. These are magically passed to the OdeToFoodContext when
             // created by IOC
             //
+
+            // sle note: the AddDbContext acts as an abstract factory and creates both a DbContextOptions type instance and
+            // a OdeToFoodDbContext type instance. Here you configure the DbContextOptions instance with the connection string.
             services.AddDbContextPool<OdeToFoodDbContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("OdeToFoodDb"));

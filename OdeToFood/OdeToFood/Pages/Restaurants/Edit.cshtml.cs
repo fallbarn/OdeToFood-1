@@ -15,9 +15,14 @@ namespace OdeToFood.Pages.Restaurants
         private readonly IRestaurantData restaurantData;
         private readonly IHtmlHelper htmlHelper;
 
-        [BindProperty]
+
+        [BindProperty]  // sle note: In coming Form values are validated via Annotations applied (here) to the Resturant type. (see defintion of Restaurant
         public Restaurant Restaurant { get; set; }
-        public IEnumerable<SelectListItem> Cuisines { get; set; }
+
+        // sle note: .net core doesn't have drag and drop corresponding server-side types that correspond with the asp control types
+        // on the page side. This is done manually by creating them as model attributes and populating them via the inject dependency
+        // method via the contructor. Here, the htmlhelper clase creates the c# equivalant classes to the clientside asp controls is used.
+        public IEnumerable<SelectListItem> Cuisines { get; set; } // sle note: SelectListItem  typeis a name value type populated typically from an enum type 
 
         public EditModel(IRestaurantData restaurantData,
                          IHtmlHelper htmlHelper)
@@ -26,6 +31,8 @@ namespace OdeToFood.Pages.Restaurants
             this.htmlHelper = htmlHelper;
         }
 
+        // sle note: GET verb - the previous ASP OnLoad is split into two (MVC style) methods OnGet() and OnPost()
+        // This allows allows (MVC style) unit testing facility.
         public IActionResult OnGet(int? restaurantId)
         {
             Cuisines = htmlHelper.GetEnumSelectList<CuisineType>();
@@ -44,10 +51,12 @@ namespace OdeToFood.Pages.Restaurants
             return Page();
         }
 
+        // sle note: POST verb - the previous ASP OnLoad is split into two (MVC style) methods OnGet() and OnPost()
+        // This allows allows (MVC style) unit testing facility.
         public IActionResult OnPost()
         {               
-            if(!ModelState.IsValid)
-            {
+            if(!ModelState.IsValid) // ModelState collects details of all the bindings that go on between the client and the form during the POST verb action. Mainly used here to collect any errors
+            {                       // Is also uses in the cshtlm 'asp-validation-for' tags to format error information to the html.
                 Cuisines = htmlHelper.GetEnumSelectList<CuisineType>();
                 return Page();                
             }

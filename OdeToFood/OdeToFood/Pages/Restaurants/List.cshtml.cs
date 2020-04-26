@@ -47,6 +47,12 @@ namespace OdeToFood.Pages.Restaurants
             this.logger = logger;
         }
 
+        /*
+         * sle note: the .net.core equivalent of the OnLoad() method in asp.net.
+         * This C# method is called when the page is loaded.
+         * The database is called to provide a list of resturants to populate the 
+         * Grid. Defaults to and empty search term attribute.
+         */
         public void OnGet()
         {
             logger.LogError("Executing ListModel");

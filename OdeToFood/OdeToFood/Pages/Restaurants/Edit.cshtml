@@ -12,9 +12,9 @@
 
     <input type="hidden" asp-for="Restaurant.Id" />
     <div class="form-group">
-        <label asp-for="Restaurant.Name"></label>
+        <label asp-for="Restaurant.Name"></label> @*sle note: asp-for gets and sets the name and value enabling the form to receive and send using the POST method*@
         <input asp-for="Restaurant.Name" class="form-control" />
-        <span class="text-danger" asp-validation-for="Restaurant.Name"></span>
+        <span class="text-danger" asp-validation-for="Restaurant.Name"></span> @* sle note: checks the 'ModelState' for the Name and formats any error messages *@
     </div>
     <div class="form-group">
         <label asp-for="Restaurant.Location"></label>
@@ -22,9 +22,9 @@
         <span class="text-danger" asp-validation-for="Restaurant.Location"></span>
     </div>
     <div class="form-group">
-        <label asp-for="Restaurant.Cuisine"></label>
+        <label asp-for="Restaurant.Cuisine"></label> @* sle note: asp-items gets and set the enum values for the select control*@
         <select class="form-control" asp-for="Restaurant.Cuisine"
-                asp-items="Model.Cuisines"></select>
+                asp-items="Model.Cuisines"></select> @*sle note: supplies the C# SelectItemType that works with the asp select control*@
         <span class="text-danger" asp-validation-for="Restaurant.Cuisine"></span>
     </div>
 
