@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 namespace OdeToFood.Data
 {
+    // sle note: Used by inmemory database and sql database
     public interface IRestaurantData
     {
         IEnumerable<Restaurant> GetRestaurantsByName(string name);
