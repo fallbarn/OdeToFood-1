@@ -4,6 +4,11 @@
     ViewData["Title"] = "Delete";
 }
 
+@* sle note: By default the layout (masterpage) in _ViewStart is used. In a page without a masterpage, then the following code should set to null. Standard HTML head & body element are then required.*@
+@*@{
+    Layout = null;
+}*@
+
 
 <h2>Delete!</h2>
 <div class="alert alert-danger">
