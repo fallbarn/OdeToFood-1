@@ -32,4 +32,12 @@
     <ProjectReference Include="..\OdeToFood.Data\OdeToFood.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Pages\R2\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\OdeToFood.png" />
+  </ItemGroup>
+
 </Project>

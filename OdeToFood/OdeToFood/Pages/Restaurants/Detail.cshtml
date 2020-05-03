@@ -4,21 +4,34 @@
     ViewData["Title"] = "Detail";
 }
 
-<h2>@Model.Restaurant.Name</h2>
-<div>
-    Id: @Model.Restaurant.Id
-</div>
-<div>
-    Location: @Model.Restaurant.Location
-</div>
-<div>
-    Cuisine: @Model.Restaurant.Cuisine
-</div>
+@*<h2>@Model.Restaurant.Name</h2>
+    <div>
+        Id: @Model.Restaurant.Id
+    </div>
+    <div>
+        Location: @Model.Restaurant.Location
+    </div>
+    <div>
+        Cuisine: @Model.Restaurant.Cuisine
+    </div>*@
 
-@if(Model.Message != null)
-{
-    <div class="alert alert-info">@Model.Message</div>
-}
+    <h2>@Model.Restaurant.Name</h2>
+    <input type="hidden" asp-for="Restaurant.Id" />
+    <div class="container">
+        <label asp-for="Restaurant.Name"></label> @*sle note: asp-for gets and sets the name and value enabling the form to receive and send using the POST method*@
+        <input asp-for="Restaurant.Name" class="form-control" readonly="readonly" />
+ 
+    </div>
+    <div class="container">
+        <label asp-for="Restaurant.Location"></label>
+        <input asp-for="Restaurant.Location" class="form-control" readonly="readonly" />      
+    </div>
+    <div class="container">
+        <label asp-for="Restaurant.Cuisine"></label>
+        <input asp-for="Restaurant.Cuisine" class="form-control" readonly="readonly" />
+      
+    </div>
+    
 
-<a asp-page="./List" class="btn btn-outline-primary">All Restaurants</a>
+     <a asp-page="./List" class="btn btn-outline-primary">All Restaurants</a>
 
