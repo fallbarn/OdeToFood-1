@@ -11,7 +11,7 @@ namespace OdeToFood.ViewComponents
     // sle note: this component is used in _Layout.cshtml. In BuildUserInterface::Rendering a view compontent.
     // It is used '<vc:restaurant-count></vc:restaurant-count>' like so, in special VS HTML. 
     // Note: K-bob case 'restaurant-Count',
-    // which VS will look for in ~OdeToFood/Pages/Shared/Component/'RestaurantCount'. A VisStud 'BY CONVENTION' mechanism;
+    // which VS will look for this 'RestaurantCountViewComponent' in ~OdeToFood/Pages/Shared/Component/'RestaurantCount'. A VisStud 'BY CONVENTION' mechanism;
     // _ViewImports.cshtml must have @addTagHelper *, OdeToFood
     //
     public class RestaurantCountViewComponent
