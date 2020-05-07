@@ -12,9 +12,9 @@ namespace OdeToFood.Pages.R2
 {
     public class DetailsModel : PageModel
     {
-        private readonly OdeToFood.Data.OdeToFoodDbContext _context;
+        private readonly OdeToFoodDbContext _context;
 
-        public DetailsModel(OdeToFood.Data.OdeToFoodDbContext context)
+        public DetailsModel(OdeToFoodDbContext context)
         {
             _context = context;
         }
