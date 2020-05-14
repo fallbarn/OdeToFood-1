@@ -25,7 +25,7 @@
                 $.ajax("/api/restaurants/",
                     { method: "get" })
                     .then(function (response) {
-                        $("#restaurants").dataTable({
+                        $("#restaurants").dataTable({ /*Sle note: An extension method has been added to the internal table class*/
                             data: response,
                             columns: [
                                 { "data": "name" },
