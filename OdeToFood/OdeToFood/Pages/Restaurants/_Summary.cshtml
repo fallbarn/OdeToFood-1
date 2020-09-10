@@ -1,4 +1,6 @@
-﻿@using OdeToFood.Core
+﻿@* sle note: partial view. call in other pages using: '<partial name="_Summary" model="restaurant"' /> Scott Allen:6.8*@
+
+@using OdeToFood.Core
 @model Restaurant
 
 <div class="card">
@@ -8,10 +10,20 @@
         <span>Cuisine: @Model.Cuisine</span>
     </div>
     <div class="card-footer">
-        @* sle note: old way <%=Html.ActionLink(Model.Title, "Details", new {Restaurant=Model.id}%> *@
+        @*
+            sle note: old way <%=Html.ActionLink(Model.Title, "Details", new {Restaurant=Model.id}%>
+
+            Scott Allen talks here about the power of tag helpers, in particular asp-route-restaurantId (dynamic tag helper incorporating the restaurant id)
+
+            Course section 3.8
+
+             Alternative: href='Restaurants/details?RestaurantId=@Model.Id, however, because the edit page defines a route, it creates /restaurants/details/1 (see section 3.9)
+
+        *@
         <a class="btn btn-lg"
            asp-page="./Detail"
-           asp-route-restaurantId="@Model.Id"> @* Alternative: href='Restaurants/details?RestaurantId=@Model.Id*@
+           asp-route-restaurantId="@Model.Id">
+            @*Adds the ?RestaurantId=@Model.Id*@
             <i class="fa fa-search-plus"></i>
         </a>
         <a class="btn btn-lg"

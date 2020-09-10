@@ -1,0 +1,44 @@
+﻿Required three nuget packages: -
+
+1. EntityFrameworkCore	
+2. EntityFrameworkCore.Design
+3. EntityFrameworkCore.Sqlserver
+
+Create a dbcontext and add attributes (each table e.g. 'DbSet<MytableType> xxxxx { get(); set();}' )
+
+A feature call MIGRATIONS 
+
+
+
+C:\Users\fallb\OneDrive\Documents\GitHub\OdeToFood\OdeToFood [aspnet21 ≡ +1 ~8 -0 !]> dotnet ef dbcontext info -s .\OdeToFood\OdeToFood.csproj
+Build started...
+Build succeeded.
+info: Microsoft.EntityFrameworkCore.Infrastructure[10403]
+      Entity Framework Core 3.1.0 initialized 'OdeToFoodDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: M
+axPoolSize=128 
+Provider name: Microsoft.EntityFrameworkCore.SqlServer
+Database name: OdeToFood
+Data source: (localdb)\MSSQLLocalDB
+Options: MaxPoolSize=128
+
+
+C:\Users\fallb\OneDrive\Documents\GitHub\OdeToFood\OdeToFood [aspnet21 ≡ +1 ~8 -0 !]> dotnet ef dbcontext list -s .\OdeToFood\OdeToFood.csproj
+Build started...
+Build succeeded.
+OdeToFood.Data.OdeToFoodDbContext
+
+
+Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\fallb\OdeToFood.mdf;Integrated Security=True;Connect Timeout=30
+
+appsSettings.json: -
+
+ "ConnectionStrings": {
+    "OdeToFoodDb":  "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=OdeToFood;Integrated Security=True;"
+  }
+
+  // sle note: the AddDbContext acts as an abstract factory and creates both a DbContextOptions type instance and
+// an OdeToFoodDbContext type instance. Here you configure the DbContextOptions instance with the connection string.
+services.AddDbContextPool<OdeToFoodDbContext>(options =>
+{
+    options.UseSqlServer(Configuration.GetConnectionString("OdeToFoodDb"));
+});

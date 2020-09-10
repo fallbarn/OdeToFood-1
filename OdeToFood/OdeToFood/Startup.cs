@@ -22,7 +22,7 @@ namespace OdeToFood
         public void ConfigureServices(IServiceCollection services)
         {
             //
-            // sle note: dependency injection 
+            // sle note: dependency injection (info is injected throught a razor pages constructor, then into a local attribute, then via @Model.myAttribute on to the cshtml page
             //
 
             //
@@ -31,14 +31,16 @@ namespace OdeToFood
             //
 
             // sle note: the AddDbContext acts as an abstract factory and creates both a DbContextOptions type instance and
-            // a OdeToFoodDbContext type instance. Here you configure the DbContextOptions instance with the connection string.
+            // an OdeToFoodDbContext type instance. Here you configure the DbContextOptions instance with the connection string.
             services.AddDbContextPool<OdeToFoodDbContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("OdeToFoodDb"));
             });
 
-           // services.AddScoped<IRestaurantData, SqlRestaurantData>();
-            services.AddSingleton<IRestaurantData, InMemoryRestaurantData>(); // sle note: using in memory
+            // sle note SqlRestaurant is added to injection dependency, which in turn instantiates OdeToFoodDbContect just above.
+            // This is what is actually specified in the startup.cs 
+             services.AddScoped<IRestaurantData, SqlRestaurantData>();
+            //services.AddSingleton<IRestaurantData, InMemoryRestaurantData>(); // sle note: using in memory
 
             services.Configure<CookiePolicyOptions>(options =>
             {

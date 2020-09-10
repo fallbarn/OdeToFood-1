@@ -21,8 +21,8 @@ namespace OdeToFood.Pages.Restaurants
 
         // sle note: .net core doesn't have drag and drop corresponding server-side types that correspond with the asp control types
         // on the page side. This is done manually by creating them as model attributes and populating them via the inject dependency
-        // method via the contructor. Here, the htmlhelper clase creates the c# equivalant classes to the clientside asp controls is used.
-        public IEnumerable<SelectListItem> Cuisines { get; set; } // sle note: SelectListItem  typeis a name value type populated typically from an enum type 
+        // method via the contructor. Here, the htmlhelper class creates the c# equivalant classes to the clientside asp controls is used.
+        public IEnumerable<SelectListItem> Cuisines { get; set; } // sle note: SelectListItem  type is a name value type populated typically from an enum type 
 
         public EditModel(IRestaurantData restaurantData,
                          IHtmlHelper htmlHelper)
@@ -35,7 +35,7 @@ namespace OdeToFood.Pages.Restaurants
         // This allows allows (MVC style) unit testing facility.
         public IActionResult OnGet(int? restaurantId)
         {
-            Cuisines = htmlHelper.GetEnumSelectList<CuisineType>();
+            Cuisines = htmlHelper.GetEnumSelectList<CuisineType>(); // use htmlhelper to create the c# equivalant classes to the clientside asp controls is used.
             if (restaurantId.HasValue)
             {
                 Restaurant = restaurantData.GetById(restaurantId.Value);

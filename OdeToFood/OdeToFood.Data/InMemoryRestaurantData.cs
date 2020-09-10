@@ -48,6 +48,7 @@ namespace OdeToFood.Data
             return 0;
         }
 
+        // sle note: used by the Search box.
         public IEnumerable<Restaurant> GetRestaurantsByName(string name = null)
         {
             return from r in restaurants

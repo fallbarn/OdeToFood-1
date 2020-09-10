@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 namespace OdeToFood.ViewComponents
 {
     //
-    // sle note: this component is used in _Layout.cshtml. In BuildUserInterface::Rendering a view compontent.
-    // It is used '<vc:restaurant-count></vc:restaurant-count>' like so, in special VS HTML. 
+    // sle note: this component is used in _Layout.cshtml. In BuildUserInterface::Rendering a view component.
+    // It is used '<vc:restaurant-count></vc:restaurant-count>' like so, in special node helper: VS HTML. 
     // Note: K-bob case 'restaurant-Count',
     // which VS will look for this 'RestaurantCountViewComponent' in ~OdeToFood/Pages/Shared/Component/'RestaurantCount'. A VisStud 'BY CONVENTION' mechanism;
     // _ViewImports.cshtml must have @addTagHelper *, OdeToFood
@@ -21,13 +21,23 @@ namespace OdeToFood.ViewComponents
 
         public RestaurantCountViewComponent(IRestaurantData restaurantData)
         {
+            // Data model is passed in via dependecy injection.
             this.restaurantData = restaurantData;
         }
 
+        /*
+         * Must be call Invoke 
+         */
         public IViewComponentResult Invoke()
         {
+            
             var count = restaurantData.GetCountOfRestaurants();
-            return View(count);
+
+            /*
+             * MVC technology. Engine will look for a cshtml page in'Pages\Shared\Component\RestaurantCount' (name of this class minus ViewComponent suffix), and pass 'count' as parameter.
+             */
+            //return View(count); // Looks for a csthml file call Default.cshtml
+            return View("SimonCount", count);
         }
 
     }

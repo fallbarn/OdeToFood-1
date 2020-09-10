@@ -2,7 +2,8 @@
 @model OdeToFood.Pages.Restaurants.EditModel
 @{
     // sle note: This page is found: https://localhost:44374/Restaurants/Edit/1
-    // sle note: By default, will look automatically for ~/Pages/shared/_Layyout.cshtml
+    // sle note: By default, will look automatically for ~/Pages/shared/_Layyout.cshtml via _ViewStart.cshtml file -
+    // therefore doesn't need HTML header and body etc.
     ViewData["Title"] = "Edit";
 }
 
@@ -22,7 +23,7 @@
         <span class="text-danger" asp-validation-for="Restaurant.Location"></span>
     </div>
     <div class="form-group">
-        <label asp-for="Restaurant.Cuisine"></label> @* sle note: asp-items gets and set the enum values for the select control*@
+        <label asp-for="Restaurant.Cuisine"></label> @* sle note: asp-for gets and set the enum values for the select control*@
         <select class="form-control" asp-for="Restaurant.Cuisine"
                 asp-items="Model.Cuisines"></select> @*sle note: supplies the C# SelectItemType that works with the asp select control*@
         <span class="text-danger" asp-validation-for="Restaurant.Cuisine"></span>

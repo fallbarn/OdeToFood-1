@@ -24,6 +24,8 @@ namespace OdeToFood.Pages.Restaurants
          * sle note: Binds the html button, whose name = 'SearchTerm' to this attribute
          * Another way is to use the httpcontext.Request.QueryString in the OnGet() and assign to attribute
          * Also, as a parameter to OnGet() (as in MVC 1.0) works with the 'asp-for' binder in the razor page.
+         * 
+         * sle note: also known (Scott Allen) as an input and output models. Instead of using HTMLRequest.paramstring
          */
         
         [BindProperty(SupportsGet =true)]
@@ -32,11 +34,13 @@ namespace OdeToFood.Pages.Restaurants
          * sle note: Dependency injection is built into .NET Core.
          * 
          * The extensions: IConfiguration and ILogger come for free, give access to system.diagnostic (I think) and the Appsetting.json.
-         * The IRestaurantData type is part of this solution. It finds its way into the constructore through: - Configure Services method
+         * The IRestaurantData type is part of this solution. It finds its way into the constructor through the Configure Services method
          *    //services.AddScoped<IRestaurantData, SqlRestaurantData>(); in the Startup.cs
          *    
          * sle note: classes passed in through the constructor are known as Services. They are normally then placed
          * into local attributes for general referencing (via @Model.xx on the page)
+         * 
+         * sle note: the three injected parameters are known (Scott Allen) as Output models
          */
         public ListModel(IConfiguration config, 
                          IRestaurantData restaurantData,

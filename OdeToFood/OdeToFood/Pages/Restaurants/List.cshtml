@@ -1,19 +1,22 @@
 ﻿@page
 @model ListModel
+@* sle note: gets _Layout.cshtml from _ViewStart.cshtml - this is by default *@
 @{
     ViewData["Title"] = "Restaurants";
 }
 
 <h1>Restaurants</h1>
 
+@*sle note: the special 'asp-for' tag replaces and combines the  'value and name' when used with bind parameters (Course 3.6)*@
+
 <form method="get">
     <div class="form-group">
         <div class="input-group">
             <input type="search" class="form-control"
                    asp-for="SearchTerm" />
-            <span>
+            <span class="input-group-btn">
                 <button class="btn btn-default">
-                    <i class="fas fa-search"></i>
+                    <i class="glyphicon glyphicon-search"></i>
                 </button>
             </span>
         </div>
