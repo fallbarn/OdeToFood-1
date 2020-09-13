@@ -11,7 +11,6 @@
 </table>
 
 @section Scripts {
-
         <script src="~/node_modules/datatables.net/js/jquery.dataTables.js"></script>
         <script src="~/node_modules/datatables.net-bs/js/dataTables.bootstrap.js"></script>
         <link href="~/node_modules/datatables.net-bs/css/dataTables.bootstrap.css" rel="stylesheet" />
@@ -22,10 +21,11 @@
 
                 var cuisines = ["Unknown", "Mexican", "Italian", "Indian"]
 
-                $.ajax("/api/restaurants/",
+                $.ajax("/apiSimon/restaurants/",
                     { method: "get" })
                     .then(function (response) {
-                        $("#restaurants").dataTable({ /*Sle note: An extension method has been added to the internal table class*/
+                        /*SLE note: An external jquery plugin from https://Datatables.net is used here (dataTable). Takes the reponse and formats the specified table.*/
+                        $("#restaurants").dataTable({ 
                             data: response,
                             columns: [
                                 { "data": "name" },

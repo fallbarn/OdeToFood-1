@@ -10,7 +10,7 @@ using OdeToFood.Data;
 
 namespace OdeToFood.Api
 {
-    [Route("api/[controller]")]
+    [Route("apiSimon/[controller]")]
     [ApiController]
     public class RestaurantsController : ControllerBase
     {

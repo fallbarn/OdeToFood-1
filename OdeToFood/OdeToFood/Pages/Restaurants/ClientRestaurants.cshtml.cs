@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace OdeToFood.Pages.Restaurants
 {
+
+    // sle note: not used. See Scott Allan 7.6
     public class ClientRestaurantsModel : PageModel
     {
       

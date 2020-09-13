@@ -33,7 +33,7 @@
     // sle note: the below VS special html calls a partial view, found in
     // the same directory, called _Summary.cshtml. By convention (not enforced) partial
     // views prepended with '_'.
-    // Note: 'var restaurant' is passed as a parameter (aka the Model);
+    // Note: 'var restaurant' is passed as a parameter (then becomes the Model);
     // _Summary.cshtml must have @using OdeToFood.Core and @model Restaurant to find the Type.
     <partial name="_Summary" model="restaurant" />
 }
@@ -41,14 +41,15 @@
 <a asp-page="./Edit" class="btn btn-outline-primary">Add New</a>
 
 @section footer {
-    <!-- SLE note: if surrounded in a at@section, then, instead of being placed in the  at@RenderBody(), is placed in the footer section in _layout.cshtml, as defined by at@RenderSection("footer", required: false)-->
+    <!-- SLE note: if surrounded in a at@section, then, instead of being placed in the _Layout at@RenderBody() location, is placed somewhere else in _layout.cshtml as defined by at@RenderSection("footer", required: false)-->
     <!-- SLE note: at@Model.Message is pulled from the attribute of the List.cs, which in this case is from config["Message"]; -->
     <div>@Model.Message</div>
     <p>This is a foot test</p>
 }
 @section footer2 {
-    <!-- SLE note: if surrounded in a at@section, then, instead of being placed in the  at@RenderBody(), is placed in the footer section in _layout.cshtml, as defined by at@RenderSection("footer", required: false)-->
+    <!-- SLE note: if surrounded in a at@section, then, instead of being placed in the  at@RenderBody(), is placed else where in _layout.cshtml, as defined by at@RenderSection("footer", required: false)-->
     <!-- SLE note: at@Model.Message is pulled from the attribute of the List.cs, which in this case is from config["Message"]; -->
+    <!--  there is a corresponding: '  at@RenderSection("footer2", required: false)' in the _Layout!-->
     <div>@Model.Message</div>
     <p>This is a sle note: to hands-on demonstrate how (AT)Section works with  (AT) RenderSection("footer2", required: false) on the _List.cshtml </p>
 }

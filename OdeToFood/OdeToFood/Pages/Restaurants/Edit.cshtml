@@ -20,7 +20,8 @@
     <div class="form-group">
         <label asp-for="Restaurant.Location"></label>
         <input asp-for="Restaurant.Location" class="form-control" />
-        <span class="text-danger" asp-validation-for="Restaurant.Location"></span>
+        @*sle note: asp-for and asp-validation-for work by default via the ModelState on the serverside. Must include JS to work Clientside!*@
+        <span class="text-danger" asp-validation-for="Restaurant.Location" ></span>
     </div>
     <div class="form-group">
         <label asp-for="Restaurant.Cuisine"></label> @* sle note: asp-for gets and set the enum values for the select control*@
@@ -32,6 +33,7 @@
     <button type="submit" class="btn btn-primary">Save</button>
 </form>
 
+@* sle note: Add validation js only when required. *@
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }

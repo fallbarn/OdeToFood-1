@@ -16,7 +16,7 @@ namespace OdeToFood.Pages.Restaurants
         private readonly IHtmlHelper htmlHelper;
 
 
-        [BindProperty]  // sle note: In coming Form values are validated via Annotations applied (here) to the Resturant type. (see defintion of Restaurant
+        [BindProperty]  // sle note: Incoming Form values are validated via Annotations applied (here) to the Resturant type. (see defintion of Restaurant
         public Restaurant Restaurant { get; set; }
 
         // sle note: .net core doesn't have drag and drop corresponding server-side types that correspond with the asp control types
@@ -55,7 +55,7 @@ namespace OdeToFood.Pages.Restaurants
         // This allows allows (MVC style) unit testing facility.
         public IActionResult OnPost()
         {               
-            if(!ModelState.IsValid) // ModelState collects details of all the bindings that go on between the client and the form during the POST verb action. Mainly used here to collect any errors
+            if(!ModelState.IsValid) // ModelState collects details of all the bindings that go on between the client and the form during the POST verb action. Mainly used here to collect errors
             {                       // Is also uses in the cshtlm 'asp-validation-for' tags to format error information to the html.
                 Cuisines = htmlHelper.GetEnumSelectList<CuisineType>();
                 return Page();                

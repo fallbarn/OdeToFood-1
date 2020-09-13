@@ -25,7 +25,7 @@ namespace OdeToFood.Pages.Restaurants
 
         /*
          * sle note: By default, OnGet returns a void, which defaults to the associated Razor page. Here we want it to handle an error condition.
-         * Instead, use the return type IActionResult, which in turn means to must use 'return Page()' to get the razor page. 
+         * Instead, use the return type IActionResult, which in turn means to must use 'return Page()' to get the associated Razor page. 
          * In case an error is detected, instead return RedirectToPage...   see Course 3.10
          */
         public IActionResult OnGet(int restaurantId)
