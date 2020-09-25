@@ -59,8 +59,9 @@ namespace OdeToFood.Pages.Restaurants
          */
         public void OnGet()
         {
-            logger.LogError("Executing ListModel SLE NOTE test error :) ");
+           
             Message = config["Message"];
+            logger.LogError($"Executing ListModel SLE NOTE test error :) {Message}");
             Restaurants = restaurantData.GetRestaurantsByName(SearchTerm);
         }
     }

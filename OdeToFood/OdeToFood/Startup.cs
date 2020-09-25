@@ -58,9 +58,15 @@ namespace OdeToFood
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            // SLE note: Remember the bi-directional Summer Corn analogy: this section sets up a pipeline of HTTP configuration tasks to call on startup.
+            // SLE note: only called at startup to set up the pipeline
+
+            // Remember the bi-directional Summer Corn analogy: this section sets up a pipeline of HTTP configuration tasks to call on startup.
             // These are tasks to undertake between the Webserver starting and displaying the first webpage.
-            // The Request Context is passed from from the first task, thru to the last task. the ' app.Use(SayHelloMiddleware);'
+            // The Request Context maybe passed from from the first task, thru to the last task. 
+            // Each task can decide if it goes to the next task.
+            // Each task, if it gets called, can: - 1. Do something, then return to previous; 2. Do something, go to next, return to previous; 3. Do someting, go to next, Do something, return to previous
+            
+            // The ' app.Use(SayHelloMiddleware);'
             // sets-up a custom task that is positioned between two standard tasks.
             if (env.IsDevelopment())
             {
@@ -100,11 +106,13 @@ namespace OdeToFood
 
                 if (ctx.Request.Path.StartsWithSegments("/hello"))
                 {
-                    await ctx.Response.WriteAsync("Hello, World!");
+                    await ctx.Response.WriteAsync("SLE Test - Before: Hello Middleware");
                 }
                 else
                 {
-                    await next(ctx);                    
+                    await next(ctx);
+
+                    await ctx.Response.WriteAsync("SLE Test - After: Hello Middleware!");
                 }
             };
         }

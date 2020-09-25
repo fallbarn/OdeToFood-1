@@ -10,6 +10,10 @@ using OdeToFood.Data;
 
 namespace OdeToFood.Api
 {
+
+    // Can call this api directly using: https://localhost:44374/apisimon/Restaurants
+    // All methods are called with the same URL prefix, only differing depending on parameter and get/put/post/delete
+
     [Route("apiSimon/[controller]")]
     [ApiController]
     public class RestaurantsController : ControllerBase
@@ -25,6 +29,15 @@ namespace OdeToFood.Api
         [HttpGet]
         public IEnumerable<Restaurant> GetRestaurants()
         {
+            // sle note: Returns the data in the following format:
+            /*
+             * [
+             * {"id":1,"name":"Simon Bistro","location":"Morecambe","cuisine":0},
+             * {"id":2,"name":"Max Restaurant","location":"111","cuisine":1}
+             * ]
+             */
+            // i.e. as a JSON array of records. Each record has a key-pair for each record attribute.
+            
             return _context.Restaurants;
         }
 
@@ -118,6 +131,7 @@ namespace OdeToFood.Api
             return Ok(restaurant);
         }
 
+        //  --helpers -- //
         private bool RestaurantExists(int id)
         {
             return _context.Restaurants.Any(e => e.Id == id);

@@ -17,6 +17,7 @@ namespace OdeToFood
     {
         public static void Main(string[] args)
         {
+            // sle note: 1st call createWebHostBuilder(), 2nd call method of return class called Build()
             var host = CreateWebHostBuilder(args).Build();
 
             MigrateDatabase(host);
